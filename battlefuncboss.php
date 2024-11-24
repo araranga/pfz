@@ -897,8 +897,12 @@ function generatebattleboss($id)
         $reward = $poke2['reward'];
 		$reward = addmore($poke2["reward"], $acvcount, 0.15);
 		
+		
+		$reward2 = $poke2['reward_money'];
+		
         $getuser = $poke1['user'];
         mysql_query_md("UPDATE tbl_accounts SET balance = balance + $reward WHERE accounts_id='$getuser'");
+		mysql_query_md("UPDATE tbl_accounts SET balance_money = balance_money + $reward2 WHERE accounts_id='$getuser'");
 
         $vt = "Slayer of the {$poke2['pokename']}";
 

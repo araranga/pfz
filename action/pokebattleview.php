@@ -487,7 +487,7 @@ font-size: 15px;
 
           
          <aside class="data rpgleft">
-            <h2>
+            <h2 style='font-size:1em;'>
 			<?php echo $p1['pokename']; ?>		
 			</h2>
 			<p><?php $x2= loadmember($p1['user']); echo $x2['fullname'];?></p>
@@ -507,7 +507,7 @@ font-size: 15px;
 
           
          <aside class="data rpgleft">
-            <h2>
+            <h2 style='font-size:1em;'>
 			<?php echo $p2['pokename']; ?>
 			</h2>
 			<p><?php $x2= loadmember($p2['user']); echo $x2['fullname'];?></p>

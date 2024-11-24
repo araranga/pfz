@@ -186,6 +186,15 @@ $user = $_SESSION['accounts_id'];
 $queryx = "SELECT * FROM tbl_battlelog WHERE user='$user' AND battledata LIKE '%$current%'";
 $qx = mysql_query_md($queryx);
 $countx = $battlecount = mysql_num_rows_md($qx);
+
+///
+
+
+$current = date("Y-m-d");
+$user = $_SESSION['accounts_id'];
+$queryxxx = "SELECT * FROM tbl_battle_boss WHERE p1user='$user' AND battledata LIKE '%$current%'";
+$qx = mysql_query_md($queryxxx);
+$countxboss = $battlecount = mysql_num_rows_md($qx);
 ?>
 
 <?php
@@ -209,7 +218,8 @@ else{
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $countx; ?> / <?php echo systemconfig("battlelimit") + $battlebonus; ?></h3>
+                <h3>PVP: <?php echo $countx; ?> / <?php echo systemconfig("battlelimit") + $battlebonus; ?></h3>
+				<h3>BOSS:<?php echo $countxboss; ?> / <?php echo systemconfig("battlelimitboss"); ?></h3>
 
                 <p>Battle Energy</p>
 				
@@ -262,7 +272,9 @@ else{
               <div class="info-box-content">
                 <span class="info-box-text"></span>
                 <span class="info-box-number">
-                 		<?php echo number_format($_SESSION['balance'],2); ?>
+                 		In-Game:<?php echo number_format($_SESSION['balance'],2); ?>
+						<br>
+						Pesos:<?php echo number_format($_SESSION['balance_money'],2); ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -279,6 +291,23 @@ else{
 			  
 			  <strong>Heroes will level every 6 wins of battle</strong>
 </div>
+
+
+<div class="callout callout-warning">
+      <h5>Your Referral Url:</h5>
+<div class="info-box">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-link"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"></span>
+                <span class="info-box-number">
+                    <?php echo $_SERVER['HTTP_HOST']; ?>/register.php?refer=<?php echo $_SESSION['accounts_id']; ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+</div>
+</div>
+
 
 <div id='pokemonjs' style='display:none;'></div>
 <div id="poke-container" class="ui cards">

@@ -15,7 +15,7 @@ while($rowxxx = mysql_fetch_md_assoc($q)) {
 
 $field[] = array("type"=>"select","value"=>"pokeclass","label"=>"Armor Element:","option"=>$damages);
 $field[] = array("type"=>"number","value"=>"reward","label"=>"Reward");
-
+$field[] = array("type"=>"number","value"=>"reward_money","label"=>"Reward Money");
 $field[] = array("type"=>"number","value"=>"level","label"=>"Level");
 
 

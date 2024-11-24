@@ -7,7 +7,7 @@ require_once("./function.php");
 <?php
 $current = date("Y-m-d");
 $user = $_SESSION['accounts_id'];
-$queryx = "SELECT * FROM tbl_battlelog WHERE user='$user' AND battledata LIKE '%$current%'";
+$queryx = "SELECT * FROM tbl_battle_boss WHERE p1user='$user' AND battledata LIKE '%$current%'";
 $qx = mysql_query_md($queryx);
 $countx = $battlecount = mysql_num_rows_md($qx);
 ?>
@@ -42,7 +42,7 @@ Once you defeated the boss. The current hero will be restricted to fight it agai
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $countx; ?> / <?php echo systemconfig("battlelimit") + $battlebonus; ?></h3>
+                <h3><?php echo $countx; ?> / <?php echo systemconfig("battlelimitboss"); ?></h3>
 
                 <p>Battle Energy</p>
               </div>
@@ -127,7 +127,7 @@ $qpokes = mysql_query_md("SELECT * FROM tbl_bosses ORDER by hp ASC");
 
 			<strong><span >Points Reward:<?php echo $rowqpokes['reward']; ?></span></strong><br/>
 
-
+			<strong><span >Money Reward:<?php echo $rowqpokes['reward_money']; ?></span></strong><br/>
               <strong><span >Required Level:<?php echo $rowqpokes['level']; ?></span></strong><br/>			
 		   <span>
 		   

@@ -6,7 +6,7 @@ $accounts_id = $_SESSION['accounts_id'];
 $q = mysql_query_md("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 $row = mysql_fetch_md_assoc($q);
 
-$conv = getcoin();
+$conv = 1;
 function trans()
 {
     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -33,9 +33,9 @@ function trans()
 						//$error .= "<i class=\"fa fa-warning\"></i>Minimum 300 coins is required.<br>";
 		}		
 		
-		if($_POST['withdraw']>$row['balance']) 
+		if($_POST['withdraw']>$row['balance_money']) 
 		{
-			$error .= "<i class=\"fa fa-warning\"></i>Amount to withdraw(".$_POST['withdraw'].") is insufficient on current balance(".$row['balance']."). Please input valid amount.<br>";
+			$error .= "<i class=\"fa fa-warning\"></i>Amount to withdraw(".$_POST['withdraw'].") is insufficient on current balance(".$row['balance_money']."). Please input valid amount.<br>";
 		}
 		
 		
@@ -56,13 +56,13 @@ function trans()
 		
 		if($error=='')
 		{
-		$sum  = $row['balance'] - $_POST['withdraw'];
+		$sum  = $row['balance_money'] - $_POST['withdraw'];
 		$convtotal = $conv * $_POST['withdraw'];
 		
-		mysql_query_md("UPDATE tbl_accounts SET balance='".$sum."' WHERE accounts_id='$accounts_id'");
+		mysql_query_md("UPDATE tbl_accounts SET balance_money='".$sum."' WHERE accounts_id='$accounts_id'");
 		$success = 1;
 		$trans = trans();
-		$convtotal_deduct = ($conv * $_POST['withdraw']) - (($conv * $_POST['withdraw']) * 0.12);
+		$convtotal_deduct = ($conv * $_POST['withdraw']) - (($conv * $_POST['withdraw']) * 0.08);
 		
 		mysql_query_md("INSERT INTO tbl_withdraw_history SET conv='$convtotal_deduct',transnum='$trans',claimtype='".$_POST['claimtype']."',address='".$_POST['address']."',accounts_id='$accounts_id',new_balance='".$sum."',amount='".$_POST['withdraw']."',current_balance='".$row['balance']."'");
 		$q = mysql_query_md("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
@@ -90,7 +90,7 @@ $field[] = array("type"=>"number","value"=>"withdraw","label"=>"Amount to withra
 $field[] = array("type"=>"password","value"=>"password","label"=>"Please enter password");
 //
 ?>
-<h2>Withdrawal Request - Balance(<?php echo number_format($row['balance'],2);?>)</h2>   
+<h2>Withdrawal Request - Balance(<?php echo number_format($row['balance_money'],2);?>)</h2>   
 <?php
 if($error!='')
 {
@@ -104,11 +104,7 @@ if($error!='')
 
 <div class="alert alert-info alert-dismissible">
 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-<h5><i class="icon fas fa-info"></i> Conversion</h5>
-*Your 1 point is now converted as <?php echo number_format($conv,5); ?> pesos<br/>
-*Amount to withdraw must be atleast 100 or higher in pesos.
-<br/>
-*Additional 12% deduction for withdrawal fee. Which help us pay server and stuff
+*Additional 8% deduction for withdrawal fee. Which help us pay server and stuff
 <br/>
 *You must have 1 item purchase in item shop
 <br/>
@@ -165,7 +161,7 @@ function eta(){
 	
 	var withdraw = parseFloat(jQuery('#withdraw').val());
 	var conv = parseFloat("<?php echo $conv; ?>");
-	var total = (withdraw * conv) - ((withdraw * conv) * 0.12);
+	var total = (withdraw * conv) - ((withdraw * conv) * 0.08);
 	
 	jQuery('#eta').text(total.toFixed(2));
 }

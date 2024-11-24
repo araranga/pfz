@@ -336,7 +336,7 @@ background-position: 570px 127px!important;
     $currpage = $_GET['pages'];
     if($currpage=='')
     {
-      $currpage = 'dashboard';
+      $currpage = 'pokemon';
     }
 
 

@@ -22,7 +22,7 @@ function moveredirect($url){
 
 
 function getconnection(){
-  return new mysqli("localhost:3307","root","root","pocketfighter");
+  return new mysqli("localhost","root","root","pocketfighter","8889");
 }
 function recordsql($q){
 if($_GET['debug']==1){
