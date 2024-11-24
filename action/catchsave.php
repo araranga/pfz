@@ -70,6 +70,9 @@ function trans()
 		}
 		
 		
+		
+		
+		
 		if(empty(trim($_POST['skill1']))){
 			
 			$error .= "<i class=\"fa fa-warning\"></i>Skill 1 empty.<br>";
