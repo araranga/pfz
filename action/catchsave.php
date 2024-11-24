@@ -68,8 +68,28 @@ function trans()
 		{
 			$error .= "<i class=\"fa fa-warning\"></i>You have no Quest Scroll Left. You can buy it on the Item Shop ;)<br>";
 		}
-		
-		
+
+
+$elements_user = getrandomelement();
+
+$_POST['skill1'] = $elements_user['skill1'];
+$_POST['skill2'] = $elements_user['skill2'];
+$_POST['skill3'] = $elements_user['skill3'];
+
+$_POST['element1'] = $elements_user['type1'];
+$_POST['element2'] = $elements_user['type2'];
+$_POST['element3'] = $elements_user['type3'];
+
+$_POST['avatar_class'] = $elements_user['armor'];
+
+
+$_POST['emblem'] = getrandoemblemuser();
+
+$_POST['weapon'] = getrandoweaponuser();
+
+$_POST['avatar'] = randomcharuser();
+  
+	
 		
 		
 		
