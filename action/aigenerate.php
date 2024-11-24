@@ -918,7 +918,7 @@ $_POST['pokename'] = ucfirst(generateName());
 $_POST['avatar'] = array_rand($avatar);
 $_POST['weapon'] = array_rand($weapons);
 
-		$pokeid = rand(1);
+		$pokeid = rand(1,1);
 		
 		$rate = rand(7,10);
 		

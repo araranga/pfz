@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
 if(!empty($_GET['installnew']))
 {
 
@@ -22,15 +24,17 @@ function moveredirect($url){
 
 
 function getconnection(){
-  return new mysqli("localhost","root","root","pocketfighter","8889");
+  return new mysqli("localhost","root","root","pfz","8888");
 }
 function recordsql($q){
-if($_GET['debug']==1){
 
-  echo $q."<Br>";
-}
-  $querydata = addslashes($_SESSION['username']."==".$q);
-  $query = "INSERT INTO tbl_sql SET querydata='{$querydata}'";
+  return $q;
+// if($_GET['debug']==1){
+
+//   echo $q."<Br>";
+// }
+//   $querydata = addslashes($_SESSION['username']."==".$q);
+//   $query = "INSERT INTO tbl_sql SET querydata='{$querydata}'";
 
 $a = strtolower($q);
 $t = 0;

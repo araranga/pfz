@@ -123,7 +123,7 @@ $_POST['avatar'] = randomcharuser();
 $x = 1;
 while($x<=ceil($_POST['withdraw']))
 {
-		$pokeid = rand(1);
+		$pokeid = rand(1,1);
 		
 
 		
