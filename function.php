@@ -796,7 +796,7 @@ function getEmblem($id)
 
 function getluck($chance, $odds)
 {
-    $luck = rand(1, $odds);
+    $luck = rand(1, intval($odds));
 	
     if ($chance >= $luck)
     {

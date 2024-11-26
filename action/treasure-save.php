@@ -88,7 +88,7 @@ if(!getluck($chance,100)){
 		
 		if($fkey=='hp'){
 			
-			$data = rand(1,250);
+			$data = rand(1,350);
 			
 			$is_rare = rand(1,3);
 			
@@ -118,7 +118,7 @@ if(!getluck($chance,100)){
 		}
 		else{
 
-			$data = rand(1,4);
+			$data = rand(1,10);
 			
 			$is_rare = rand(1,3);
 			
