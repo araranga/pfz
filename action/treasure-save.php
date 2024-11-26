@@ -99,7 +99,7 @@ if(!getluck($chance,100)){
 			
 			$data = rand(1,35);
 			
-			$is_rare = rand(1,2,3);
+			$is_rare = rand(1,3);
 			
 			$valfinal = $is_rare * $data;
 			

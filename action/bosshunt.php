@@ -19,6 +19,7 @@ $loaduser = loadmember($_SESSION['accounts_id']);
 $battlebonus = 0;
 	//check for subscription
  $date_now = new DateTime();
+ if(!empty($loaduser['deadline'])){
  $date2    = new DateTime($loaduser['deadline']);
 
 if ($date_now > $date2) {
@@ -27,6 +28,7 @@ if ($date_now > $date2) {
 else{
 	$battlebonus = $loaduser['deadline_bonus'];
 }	
+}
 
 ?>	
 <div class="callout callout-info">

@@ -201,6 +201,8 @@ $countxboss = $battlecount = mysql_num_rows_md($qx);
 
 $loaduser = loadmember($_SESSION['accounts_id']);
 $battlebonus = 0;
+
+if($loaduser['deadline']){
 	//check for subscription
  $date_now = new DateTime();
  $date2    = new DateTime($loaduser['deadline']);
@@ -211,7 +213,7 @@ if ($date_now > $date2) {
 else{
 	$battlebonus = $loaduser['deadline_bonus'];
 }	
-
+}
 ?>		
 <div class='row'>
           <div class="col-lg-6 col-6">

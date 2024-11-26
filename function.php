@@ -1308,6 +1308,7 @@ function savebattle($hash)
 
     $loaduser = loadmember($poke['user']);
     $battlebonus = 0;
+    if(!empty($loaduser['deadline'])){
     //check for subscription
     $date_now = new DateTime();
     $date2 = new DateTime($loaduser['deadline']);
@@ -1319,6 +1320,7 @@ function savebattle($hash)
     else
     {
         $battlebonus = $loaduser['deadline_bonus'];
+    }
     }
     //
     
