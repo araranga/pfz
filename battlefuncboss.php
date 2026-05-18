@@ -255,8 +255,8 @@ function generatebattleboss($id)
             if ($c['freeze_enemy'] && $turn == 1) { $enemy_freeze_1 = 1; }
             if ($c['freeze_enemy'] && $turn == 2) { $enemy_freeze_2 = 1; }
         }
-        if ($turn == 1) { $hp2 = $ctx_after['hp_self'];  $hp1 = $ctx_after2['hp_self']; }
-        else            { $hp1 = $ctx_after['hp_self'];  $hp2 = $ctx_after2['hp_self']; }
+        if ($turn == 1) { $hp2 = $ctx_after['hp_self']; }
+        else            { $hp1 = $ctx_after['hp_self']; }
 
         if ($winner) { break; }
 

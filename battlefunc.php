@@ -295,8 +295,10 @@ function generatebattle($id)
             if ($c['freeze_enemy'] && $turn == 2) { $enemy_freeze_2 = 1; }
         }
         // write hp mutations from after-attack back
-        if ($turn == 1) { $hp2 = $ctx_after['hp_self'];  $hp1 = $ctx_after2['hp_self']; }
-        else            { $hp1 = $ctx_after['hp_self'];  $hp2 = $ctx_after2['hp_self']; }
+        // ctx_after holds the defender's hp (reflect may have changed it)
+        // ctx_after2 only covers attacker-side emblems (doubleattack, freeze) which don't change hp_self
+        if ($turn == 1) { $hp2 = $ctx_after['hp_self']; }
+        else            { $hp1 = $ctx_after['hp_self']; }
 
         if ($winner) { break; }
 
